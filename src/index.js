@@ -33,6 +33,21 @@ passport.use(new LocalStrategy({
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
+//passport config users
+app.use(passport.initialize());
+app.use(passport.session());
+const User = require('./model/user');
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+},
+User.authenticate()
+));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // api routes v1
 app.use('/api/v1', routes);
 

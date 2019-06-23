@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import Playlist from './playlist';
 import DataDetected from './datadetected';
+import passportLocalMongoose from 'passport-local-mongoose';
+
 
  const Schema = mongoose.Schema;
 
@@ -8,6 +10,7 @@ import DataDetected from './datadetected';
 
             name: String,
             email: String,
+            password:String,
             photoUrl: String,
             emailVerified:String,
             uid:String,
@@ -24,7 +27,7 @@ import DataDetected from './datadetected';
     
     
  });
-
+ UserSchema.plugin(passportLocalMongoose);
  module.exports = mongoose.model('User',UserSchema);
 
  

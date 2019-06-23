@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Router } from 'express';
-import Users from '../model/users';
+import Users from '../model/user';
 import Playlists from '../model/playlist';
 import DataDetected from '../model/datadetected';
 
@@ -57,6 +57,8 @@ export default({config,db}) => {
                 res.send(err);
             }
             users.name = req.body.name;
+            users.email = req.body.email,
+            users.photoUrl = req.body.photoUrl,
             users.save(err => {
                 if(err){
                     res.send(err);
@@ -109,7 +111,7 @@ export default({config,db}) => {
     // '/v1/songfeels/datadetected/add/:id'
     
     api.post('/datadetected/add/:id', (req,res) => {
-        DataDetected.findById(req.params.id, ( err, datadetected) => {
+        DataDetected.findById(req.params.id,authenticate, ( err, users) => {
             if(err){
                 res.send(err);
             }
@@ -117,6 +119,7 @@ export default({config,db}) => {
 
             newDataDetected.data_detected.color = req.body.color;
             newDataDetected.data_detected.object_in_image.object_name = req.body.object_in_image.object_name;
+            newDataDetected.users = users._id;
             newDataDetected.save((err, datadetectd) => {
                 if(err){
                     res.send(err);
@@ -148,7 +151,7 @@ export default({config,db}) => {
     // '/v1/songfeels/playlists/add/:id'
     
     api.post('/playlists/add/:id', (req,res) => {
-        Playlists.findById(req.params.id, ( err, playlist) => {
+        Users.findById(req.params.id, ( err, users) => {
             if(err){
                 res.send(err);
             }
@@ -159,7 +162,7 @@ export default({config,db}) => {
             newPlaylists.playlists.playlist_detail = req.body.playlists.playlist_detail;
             newPlaylists.playlists.playlist_photo = req.body.playlists.playlist_photo;
             newPlaylists.playlists.playlist_duration = req.body.playlists.playlist_duration;
-            newPlaylists.playlists.playlist_dateTime = req.body.playlists.playlist_dateTime;
+            newPlaylists.users = users._id;
             newPlaylists.save((err, playlists) => {
                 if(err){
                     res.send(err);
@@ -175,10 +178,11 @@ export default({config,db}) => {
         });
     });
 
+
     //get playlists for a specific playlists id
-    // '/v1/playlists/:id'
-    api.get('/playlists/:id', (req,res) => {
-        Playlists.find({playlists: req.params.id}, (err, playlsits) => {
+    // '/v1/songfeels/playlists/:id'
+    api.get('/playlists/', (req,res) => {
+        Playlists.find({}, (err, playlsits) => {
             if(err){
                 res.send(err);
             }
@@ -186,6 +190,17 @@ export default({config,db}) => {
         });
     });
 
+    
+    //get reviews for a specific food fruck id
+    // '/v1/songfeels/playlists/:id'
+    api.get('/playlists/:id', (req,res) => {
+        Playlists.find({users: req.params.id}, (err, playlists) => {
+            if(err){
+                res.send(err);
+            }
+            res.json(playlists);
+        });
+    });
 
     return api;
 }

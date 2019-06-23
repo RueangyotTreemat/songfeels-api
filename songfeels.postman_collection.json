@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "006ffcdc-fb99-4eab-837b-09627a97b98b",
+		"name": "songfeels",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Playlists",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMGY4YTFjNDdmNTE0MWRmOGQ0OGFkNCIsImlhdCI6MTU2MTI5OTQ5OSwiZXhwIjoxNTYzODkxNDk5fQ.JCW4vVE8S28ipPGRtpfRNvQ1vSSWZR-S_aInvwqz5-Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"playlists\":{\r\n            \"playlist_id\":\"egfkgkdfgop\",\r\n            \"playlist_title\":\"Love Love\",\r\n            \"playlist_detail\":\"love\",\r\n            \"playlist_photo\":\"String\",\r\n            \"playlist_duration\":\"3:45\"\r\n        }\r\n }\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/playlists/add/5d0f7c735d5a8f54347b749c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"playlists",
+						"add",
+						"5d0f7c735d5a8f54347b749c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Users Google,Facebook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Playlists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/playlists/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"playlists",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Playlists Specific User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/playlists/5d0f885747f5141df8d48ad2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"playlists",
+						"5d0f885747f5141df8d48ad2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DataDetected",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/datadetected",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"datadetected"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"mm4534@gmail.com\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"mm4534@gmail.com\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD Users For Google, Facebook Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"name\": \"String\",\r\n        \"email\": \"String\",\r\n        \"phtoUrl\": \"String\",\r\n        \"emailVerified\":\"String\",\r\n        \"uid\":\"String\"\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/users/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"nn@gmail.com\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/account/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User just register email ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bff0cf9a-d5c5-4c99-8e05-c5bba92373ae",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMGY1NmY3MTAyMWEyMWIyODgzMTYyYSIsImlhdCI6MTU2MTI4NzIzMCwiZXhwIjoxNTYzODc5MjMwfQ.YSjqiYSaU8o2aRzvKCOO5DI0Ji8YCKGoLqDA2azFhWg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/users/delete/5d0f8a1c47f5141df8d48ad4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"users",
+						"delete",
+						"5d0f8a1c47f5141df8d48ad4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\r\n\t\t\t\"name\": \"NimNim\",\r\n            \"email\": \"nim@gmail.com\",\r\n            \"photoUrl\": \"https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_photographer_woman-512.png\"\r\n            \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/songfeels/users/update/5d0f885747f5141df8d48ad2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"songfeels",
+						"users",
+						"update",
+						"5d0f885747f5141df8d48ad2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

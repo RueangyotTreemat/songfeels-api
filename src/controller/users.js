@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Router } from 'express';
-import Account from '../model/account';
+import Users from '../model/user';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import config from '../config';
@@ -13,22 +13,22 @@ export default ({config,db}) => {
     const api = Router();
     
 
-    // '/api/v1/account'
+    // '/api/v1/user'
     api.get('/', (req,res) => {
-        Account.find({}, (err, account) => {
+        Users.find({}, (err, users) => {
             if(err){
                 res.send(err);
             }
-            res.json(account);
+            res.json(users);
         });
     });
 
-    // '/api/v1/account/register'
+    // '/api/v1/user/register'
     api.post('/register', (req,res) => {
 
-        Account.register(new Account({
+        Users.register(new Users({
             username: req.body.email
-        }), req.body.password, (err, account) => {
+        }), req.body.password, (err, users) => {
             if(err){
                 if(err.name == "UserExistsError"){
                     console.log("User Exists");
@@ -43,7 +43,7 @@ export default ({config,db}) => {
                 'local',{
                     session: false
                 })(req,res, () => {
-                    res.status(200).send('Successfully created new account');
+                    res.status(200).send('Successfully created new user');
                 });
         });
     });
@@ -56,7 +56,7 @@ export default ({config,db}) => {
         }), generateAccessToken,respond);
     
 
-    // '/api/v1/account/logout'
+    // '/api/v1/user/logout'
     api.get('/logout', authenticate, (req,res) => {
         req.logout();
         res.status(200).send('Successfully loged out')
